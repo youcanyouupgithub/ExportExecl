@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExportExeclWebDemo", "ExportExeclWebDemo\ExportExeclWebDemo.csproj", "{C7380B2E-ED6B-4D53-8986-6761DA110E73}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtmlTableToExecl", "NopiCommon\HtmlTableToExecl.csproj", "{E94D8B32-FED6-4632-B89B-AF3E68FD1C6B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtmlTableToExecl", "HtmlTableToExecl\HtmlTableToExecl.csproj", "{E94D8B32-FED6-4632-B89B-AF3E68FD1C6B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
