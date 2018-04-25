@@ -107,7 +107,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\NopiCommon\HtmlTableToExecl.csproj">
+    <ProjectReference Include="..\HtmlTableToExecl\HtmlTableToExecl.csproj">
       <Project>{e94d8b32-fed6-4632-b89b-af3e68fd1c6b}</Project>
       <Name>HtmlTableToExecl</Name>
     </ProjectReference>
