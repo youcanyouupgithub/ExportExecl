@@ -15,3 +15,12 @@ C:\Users\Administrator\Desktop\Demo\ExportExeclWebDemo\NopiCommon\bin\Debug\NPOI
 C:\Users\Administrator\Desktop\Demo\ExportExeclWebDemo\NopiCommon\obj\Debug\HtmlTableToExecl.csprojResolveAssemblyReference.cache
 C:\Users\Administrator\Desktop\Demo\ExportExeclWebDemo\NopiCommon\obj\Debug\HtmlTableToExecl.dll
 C:\Users\Administrator\Desktop\Demo\ExportExeclWebDemo\NopiCommon\obj\Debug\HtmlTableToExecl.pdb
+D:\projects\ExportExecl\NopiCommon\bin\Debug\HtmlTableToExecl.dll.config
+D:\projects\ExportExecl\NopiCommon\bin\Debug\HtmlTableToExecl.dll
+D:\projects\ExportExecl\NopiCommon\bin\Debug\HtmlTableToExecl.pdb
+D:\projects\ExportExecl\NopiCommon\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\projects\ExportExecl\NopiCommon\bin\Debug\NPOI.dll
+D:\projects\ExportExecl\NopiCommon\bin\Debug\NPOI.xml
+D:\projects\ExportExecl\NopiCommon\obj\Debug\HtmlTableToExecl.csprojResolveAssemblyReference.cache
+D:\projects\ExportExecl\NopiCommon\obj\Debug\HtmlTableToExecl.dll
+D:\projects\ExportExecl\NopiCommon\obj\Debug\HtmlTableToExecl.pdb
