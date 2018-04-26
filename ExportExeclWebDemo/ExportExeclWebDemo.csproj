@@ -83,6 +83,7 @@
     <Content Include="ExportExecl.aspx" />
     <Content Include="Js\HtmlTableToExecl.js" />
     <Content Include="Js\jquery-1.9.1.js" />
+    <Content Include="LoadWordTable.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -94,6 +95,13 @@
     </Compile>
     <Compile Include="ExportExecl.aspx.designer.cs">
       <DependentUpon>ExportExecl.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LoadWordTable.aspx.cs">
+      <DependentUpon>LoadWordTable.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LoadWordTable.aspx.designer.cs">
+      <DependentUpon>LoadWordTable.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
