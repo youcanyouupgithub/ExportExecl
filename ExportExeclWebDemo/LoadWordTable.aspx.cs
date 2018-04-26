@@ -12,7 +12,12 @@ namespace ExportExeclWebDemo
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            WordHelper.ExcuteWord();
+            List<string> doclist=new List<string>(){ "d:/test.docx" };
+            foreach (var strfilepath in doclist)
+            {
+                WordHelper.ExcuteWord(strfilepath);
+            }
+
         }
     }
 }

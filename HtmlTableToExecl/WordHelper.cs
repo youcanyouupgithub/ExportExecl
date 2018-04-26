@@ -6,6 +6,8 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using DAL;
+using Model;
 using NPOI.XWPF.UserModel;
 
 namespace HtmlTableToExecl
@@ -19,15 +21,36 @@ namespace HtmlTableToExecl
         /// 读取表
         /// </summary>
         /// <returns></returns>
-        public static string ExcuteWord()
+        public static string ExcuteWord(string strfilepath)
         {
+            D_Impdish dImpdish=new D_Impdish();
+
+
             StringBuilder sb = new StringBuilder();
-            using (FileStream stream = File.OpenRead("d:/test.docx"))
+            using (FileStream stream = File.OpenRead(strfilepath))
             {
                 XWPFDocument doc = new XWPFDocument(stream);
                 var tables = doc.Tables;
                 foreach (var table in tables)    //遍历表格  
                 {
+                    E_Impdish eImpdish = new E_Impdish();
+
+                    eImpdish.dishname = table.Rows[0].GetCell(1).Paragraphs[0].ParagraphText;
+                    eImpdish.pic = table.Rows[0].GetCell(2).Paragraphs[0].ParagraphText;
+                    eImpdish.caix = table.Rows[1].GetCell(1).Paragraphs[0].ParagraphText;
+
+                    eImpdish.dishname = table.Rows[0].GetCell(1).Paragraphs[0].ParagraphText;
+                    eImpdish.dishname = table.Rows[0].GetCell(1).Paragraphs[0].ParagraphText;
+                    eImpdish.dishname = table.Rows[0].GetCell(1).Paragraphs[0].ParagraphText;
+                    eImpdish.dishname = table.Rows[0].GetCell(1).Paragraphs[0].ParagraphText;
+                    eImpdish.dishname = table.Rows[0].GetCell(1).Paragraphs[0].ParagraphText;
+                    eImpdish.dishname = table.Rows[0].GetCell(1).Paragraphs[0].ParagraphText;
+                    eImpdish.dishname = table.Rows[0].GetCell(1).Paragraphs[0].ParagraphText;
+                    eImpdish.dishname = table.Rows[0].GetCell(1).Paragraphs[0].ParagraphText;
+                    eImpdish.dishname = table.Rows[0].GetCell(1).Paragraphs[0].ParagraphText;
+
+                    dImpdish.Add(eImpdish);
+                    /*
                     foreach (var row in table.Rows)    //遍历行  
                     {
                         var c0 = row.GetCell(0);        //获得单元格0  
@@ -38,6 +61,7 @@ namespace HtmlTableToExecl
                             sb.Append(text + ",");
                         }
                     }
+                    */
                 }
                 return sb.ToString();
             }
