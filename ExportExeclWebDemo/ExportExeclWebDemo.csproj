@@ -83,7 +83,9 @@
     <Content Include="ExportExecl.aspx" />
     <Content Include="Js\HtmlTableToExecl.js" />
     <Content Include="Js\jquery-1.9.1.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ExportExecl.aspx.cs">
@@ -107,6 +109,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{1db60154-7e7e-4d70-bb1a-84d736e6fec2}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HtmlTableToExecl\HtmlTableToExecl.csproj">
       <Project>{e94d8b32-fed6-4632-b89b-af3e68fd1c6b}</Project>
       <Name>HtmlTableToExecl</Name>
