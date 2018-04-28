@@ -35,19 +35,18 @@ namespace HtmlTableToExecl
                 {
                     E_Impdish eImpdish = new E_Impdish();
 
-                    eImpdish.dishname = table.Rows[0].GetCell(1).Paragraphs[0].ParagraphText;
-                    eImpdish.pic = table.Rows[0].GetCell(2).Paragraphs[0].ParagraphText;
-                    eImpdish.caix = table.Rows[1].GetCell(1).Paragraphs[0].ParagraphText;
+                    eImpdish.dishname = table.Rows[0].GetCell(1).Paragraphs[0].ParagraphText; //菜品名称
+                    eImpdish.pic = table.Rows[0].GetCell(2).Paragraphs[0].ParagraphText;      //图片
+                    eImpdish.caix = table.Rows[1].GetCell(1).Paragraphs[0].ParagraphText;     //菜系
 
-                    eImpdish.dishname = table.Rows[0].GetCell(1).Paragraphs[0].ParagraphText;
-                    eImpdish.dishname = table.Rows[0].GetCell(1).Paragraphs[0].ParagraphText;
-                    eImpdish.dishname = table.Rows[0].GetCell(1).Paragraphs[0].ParagraphText;
-                    eImpdish.dishname = table.Rows[0].GetCell(1).Paragraphs[0].ParagraphText;
-                    eImpdish.dishname = table.Rows[0].GetCell(1).Paragraphs[0].ParagraphText;
-                    eImpdish.dishname = table.Rows[0].GetCell(1).Paragraphs[0].ParagraphText;
-                    eImpdish.dishname = table.Rows[0].GetCell(1).Paragraphs[0].ParagraphText;
-                    eImpdish.dishname = table.Rows[0].GetCell(1).Paragraphs[0].ParagraphText;
-                    eImpdish.dishname = table.Rows[0].GetCell(1).Paragraphs[0].ParagraphText;
+                    eImpdish.weix = table.Rows[0].GetCell(1).Paragraphs[0].ParagraphText;
+                    eImpdish.diz = table.Rows[0].GetCell(1).Paragraphs[0].ParagraphText;
+                    eImpdish.prjf = table.Rows[0].GetCell(1).Paragraphs[0].ParagraphText;
+                    eImpdish.zhul = table.Rows[0].GetCell(1).Paragraphs[0].ParagraphText;
+                    eImpdish.ful = table.Rows[0].GetCell(1).Paragraphs[0].ParagraphText;
+                    eImpdish.tiaol = table.Rows[0].GetCell(1).Paragraphs[0].ParagraphText;
+                    eImpdish.pengrjf = table.Rows[0].GetCell(1).Paragraphs[0].ParagraphText;
+                    eImpdish.jishuyd = table.Rows[0].GetCell(1).Paragraphs[0].ParagraphText;
 
                     dImpdish.Add(eImpdish);
                     /*
