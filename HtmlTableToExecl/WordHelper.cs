@@ -34,17 +34,34 @@ namespace HtmlTableToExecl
                 foreach (var table in tables)    //遍历表格  
                 {
                     E_Impdish eImpdish = new E_Impdish();
-                    eImpdish.dishname = table.Rows[0].GetCell(1).Paragraphs[0].ParagraphText; //菜品名称
-                    eImpdish.pic = table.Rows[0].GetCell(2).Paragraphs[0].ParagraphText.Replace("\t", "");      //图片
-                    eImpdish.caix = table.Rows[1].GetCell(1).Paragraphs[0].ParagraphText;     //菜系
-                    eImpdish.weix = table.Rows[2].GetCell(1).Paragraphs[0].ParagraphText;     //味型
-                    eImpdish.diz = table.Rows[3].GetCell(1).Paragraphs[0].ParagraphText;      //地质
-                    eImpdish.prjf = table.Rows[4].GetCell(1).Paragraphs[0].ParagraphText;     //烹饪技法
-                    eImpdish.zhul = table.Rows[5].GetCell(1).Paragraphs[0].ParagraphText;     //主料
-                    eImpdish.ful = table.Rows[6].GetCell(1).Paragraphs[0].ParagraphText;      //辅料
-                    eImpdish.tiaol = table.Rows[7].GetCell(1).Paragraphs[0].ParagraphText;    //调料
-                    eImpdish.pengrjf = table.Rows[8].GetCell(1).Paragraphs[0].ParagraphText;  //烹饪方法
-                    eImpdish.jishuyd = table.Rows[9].GetCell(1).Paragraphs[0].ParagraphText;  //技术要点
+                    if (docpath.IndexOf("wan/9.docx") > -1)
+                    {
+                        eImpdish.dishname = table.Rows[0].GetCell(1).Paragraphs[0].ParagraphText; //菜品名称
+                        eImpdish.pic = table.Rows[0].GetCell(2).Paragraphs[0].ParagraphText.Replace("\t", "");      //图片
+                        eImpdish.caix = table.Rows[1].GetCell(1).Paragraphs[0].ParagraphText;     //菜系
+                        eImpdish.weix = table.Rows[2].GetCell(1).Paragraphs[0].ParagraphText;     //味型
+                        eImpdish.diz = "";//table.Rows[3].GetCell(1).Paragraphs[0].ParagraphText;      //地质
+                        eImpdish.prjf = "";// table.Rows[4].GetCell(1).Paragraphs[0].ParagraphText;     //烹饪技法
+                        eImpdish.zhul = table.Rows[4].GetCell(1).Paragraphs[0].ParagraphText;     //主料
+                        eImpdish.ful = table.Rows[5].GetCell(1).Paragraphs[0].ParagraphText;      //辅料
+                        eImpdish.tiaol = table.Rows[6].GetCell(1).Paragraphs[0].ParagraphText;    //调料
+                        eImpdish.pengrjf = table.Rows[10].GetCell(1).Paragraphs[0].ParagraphText;  //烹饪方法
+                        eImpdish.jishuyd = "";//table.Rows[9].GetCell(1).Paragraphs[0].ParagraphText;  //技术要点
+                    }
+                    else
+                    {
+                        eImpdish.dishname = table.Rows[0].GetCell(1).Paragraphs[0].ParagraphText; //菜品名称
+                        eImpdish.pic = table.Rows[0].GetCell(2).Paragraphs[0].ParagraphText.Replace("\t", "");      //图片
+                        eImpdish.caix = table.Rows[1].GetCell(1).Paragraphs[0].ParagraphText;     //菜系
+                        eImpdish.weix = table.Rows[2].GetCell(1).Paragraphs[0].ParagraphText;     //味型
+                        eImpdish.diz = table.Rows[3].GetCell(1).Paragraphs[0].ParagraphText;      //地质
+                        eImpdish.prjf = table.Rows[4].GetCell(1).Paragraphs[0].ParagraphText;     //烹饪技法
+                        eImpdish.zhul = table.Rows[5].GetCell(1).Paragraphs[0].ParagraphText;     //主料
+                        eImpdish.ful = table.Rows[6].GetCell(1).Paragraphs[0].ParagraphText;      //辅料
+                        eImpdish.tiaol = table.Rows[7].GetCell(1).Paragraphs[0].ParagraphText;    //调料
+                        eImpdish.pengrjf = table.Rows[8].GetCell(1).Paragraphs[0].ParagraphText;  //烹饪方法
+                        eImpdish.jishuyd = table.Rows[9].GetCell(1).Paragraphs[0].ParagraphText;  //技术要点
+                    }
 
                     //查找对应图片，并进行拷贝重命名
                     var imgname = Guid.NewGuid();
@@ -56,7 +73,7 @@ namespace HtmlTableToExecl
                     if (file.Exists)
                     {
                         file.CopyTo(newimgpath, true);
-                        eImpdish.newpic = "{%upimg%}/" + imgname + ".jpg";
+                        eImpdish.newpic = "{%upimgpath%}/upload/20180501/" + imgname + ".jpg";
                     }
 
                     //PNG
@@ -66,7 +83,7 @@ namespace HtmlTableToExecl
                     if (file.Exists)
                     {
                         file.CopyTo(newimgpath, true);
-                        eImpdish.newpic = "{%upimg%}/" + imgname + ".png";
+                        eImpdish.newpic = "{%upimgpath%}/upload/20180501/" + imgname + ".png";
                     }
 
                     var id = dImpdish.Add(eImpdish);
