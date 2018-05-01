@@ -21,46 +21,63 @@ namespace HtmlTableToExecl
         /// 读取表
         /// </summary>
         /// <returns></returns>
-        public static string ExcuteWord(string strfilepath)
+        public static string ExcuteWord(string docpath, string imgpath)
         {
-            D_Impdish dImpdish=new D_Impdish();
+            D_Impdish dImpdish = new D_Impdish();
 
 
             StringBuilder sb = new StringBuilder();
-            using (FileStream stream = File.OpenRead(strfilepath))
+            using (FileStream stream = File.OpenRead(docpath))
             {
                 XWPFDocument doc = new XWPFDocument(stream);
                 var tables = doc.Tables;
                 foreach (var table in tables)    //遍历表格  
                 {
                     E_Impdish eImpdish = new E_Impdish();
-
                     eImpdish.dishname = table.Rows[0].GetCell(1).Paragraphs[0].ParagraphText; //菜品名称
-                    eImpdish.pic = table.Rows[0].GetCell(2).Paragraphs[0].ParagraphText;      //图片
+                    eImpdish.pic = table.Rows[0].GetCell(2).Paragraphs[0].ParagraphText.Replace("\t", "");      //图片
                     eImpdish.caix = table.Rows[1].GetCell(1).Paragraphs[0].ParagraphText;     //菜系
+                    eImpdish.weix = table.Rows[2].GetCell(1).Paragraphs[0].ParagraphText;     //味型
+                    eImpdish.diz = table.Rows[3].GetCell(1).Paragraphs[0].ParagraphText;      //地质
+                    eImpdish.prjf = table.Rows[4].GetCell(1).Paragraphs[0].ParagraphText;     //烹饪技法
+                    eImpdish.zhul = table.Rows[5].GetCell(1).Paragraphs[0].ParagraphText;     //主料
+                    eImpdish.ful = table.Rows[6].GetCell(1).Paragraphs[0].ParagraphText;      //辅料
+                    eImpdish.tiaol = table.Rows[7].GetCell(1).Paragraphs[0].ParagraphText;    //调料
+                    eImpdish.pengrjf = table.Rows[8].GetCell(1).Paragraphs[0].ParagraphText;  //烹饪方法
+                    eImpdish.jishuyd = table.Rows[9].GetCell(1).Paragraphs[0].ParagraphText;  //技术要点
 
-                    eImpdish.weix = table.Rows[0].GetCell(1).Paragraphs[0].ParagraphText;
-                    eImpdish.diz = table.Rows[0].GetCell(1).Paragraphs[0].ParagraphText;
-                    eImpdish.prjf = table.Rows[0].GetCell(1).Paragraphs[0].ParagraphText;
-                    eImpdish.zhul = table.Rows[0].GetCell(1).Paragraphs[0].ParagraphText;
-                    eImpdish.ful = table.Rows[0].GetCell(1).Paragraphs[0].ParagraphText;
-                    eImpdish.tiaol = table.Rows[0].GetCell(1).Paragraphs[0].ParagraphText;
-                    eImpdish.pengrjf = table.Rows[0].GetCell(1).Paragraphs[0].ParagraphText;
-                    eImpdish.jishuyd = table.Rows[0].GetCell(1).Paragraphs[0].ParagraphText;
+                    //查找对应图片，并进行拷贝重命名
+                    var imgname = Guid.NewGuid();
 
-                    dImpdish.Add(eImpdish);
-                    /*
-                    foreach (var row in table.Rows)    //遍历行  
+                    //JPG
+                    var img = imgpath + eImpdish.pic + ".jpg";
+                    var newimgpath = @"D:/dish/upload/" + imgname + ".jpg";
+                    FileInfo file = new FileInfo(img);
+                    if (file.Exists)
                     {
-                        var c0 = row.GetCell(0);        //获得单元格0  
-                        foreach (var para in c0.Paragraphs)
-                        {
-                            string text = para.ParagraphText;
-                            //处理段落      
-                            sb.Append(text + ",");
-                        }
+                        file.CopyTo(newimgpath, true);
+                        eImpdish.newpic = "{%upimg%}/" + imgname + ".jpg";
                     }
-                    */
+
+                    //PNG
+                    img = imgpath + eImpdish.pic + ".png";
+                    newimgpath = @"D:/dish/upload/" + imgname + ".png";
+                    file = new FileInfo(img);
+                    if (file.Exists)
+                    {
+                        file.CopyTo(newimgpath, true);
+                        eImpdish.newpic = "{%upimg%}/" + imgname + ".png";
+                    }
+
+                    var id = dImpdish.Add(eImpdish);
+                    if (id > 0)
+                    {
+                        sb.Append($"OK：{eImpdish.dishname}</br>");
+                    }
+                    else
+                    {
+                        sb.Append($"NO：{eImpdish.dishname}=》添加失败</br>");
+                    }
                 }
                 return sb.ToString();
             }

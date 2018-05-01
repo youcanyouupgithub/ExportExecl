@@ -68,6 +68,11 @@ namespace Model
         /// </summary>
         public string jishuyd { get; set; }
 
+        /// <summary>
+        /// 图片路径
+        /// </summary>
+        public string newpic { get; set; }
+
     }
 }
 

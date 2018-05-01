@@ -22,9 +22,9 @@ namespace DAL
         public int Add(E_Impdish model)
         {
             string sql = @"INSERT INTO tb_impdish
-                ([dishname],[caix],[weix],[diz],[prjf],[pic],[zhul],[ful],[tiaol],[pengrjf],[jishuyd]) 
+                ([dishname],[caix],[weix],[diz],[prjf],[pic],[zhul],[ful],[tiaol],[pengrjf],[jishuyd],[newpic]) 
                 VALUES 
-                (@dishname,@caix,@weix,@diz,@prjf,@pic,@zhul,@ful,@tiaol,@pengrjf,@jishuyd);select @@IDENTITY;";
+                (@dishname,@caix,@weix,@diz,@prjf,@pic,@zhul,@ful,@tiaol,@pengrjf,@jishuyd,@newpic);select @@IDENTITY;";
             using (IDbConnection conn = new SqlConnection(DapperHelper.GetConStr()))
             {
                 return Convert.ToInt32(conn.ExecuteScalar(sql, model));
