@@ -42,10 +42,11 @@ namespace HtmlTableToExecl
                         eImpdish.weix = table.Rows[2].GetCell(1).Paragraphs[0].ParagraphText;     //味型
                         eImpdish.diz = "";//table.Rows[3].GetCell(1).Paragraphs[0].ParagraphText;      //地质
                         eImpdish.prjf = "";// table.Rows[4].GetCell(1).Paragraphs[0].ParagraphText;     //烹饪技法
-                        eImpdish.zhul = table.Rows[4].GetCell(1).Paragraphs[0].ParagraphText;     //主料
-                        eImpdish.ful = table.Rows[5].GetCell(1).Paragraphs[0].ParagraphText;      //辅料
-                        eImpdish.tiaol = table.Rows[6].GetCell(1).Paragraphs[0].ParagraphText;    //调料
-                        eImpdish.pengrjf = table.Rows[10].GetCell(1).Paragraphs[0].ParagraphText;  //烹饪方法
+                        eImpdish.zhul = GetAllParagraphText(table.Rows[4].GetCell(1).Paragraphs);     //主料
+                        eImpdish.ful = GetAllParagraphText(table.Rows[5].GetCell(1).Paragraphs);      //辅料
+                        eImpdish.tiaol = GetAllParagraphText(table.Rows[6].GetCell(1).Paragraphs);    //调料
+                        eImpdish.pengrjf = GetAllParagraphText(table.Rows[10].GetCell(1).Paragraphs);  //烹饪方法
+
                         eImpdish.jishuyd = "";//table.Rows[9].GetCell(1).Paragraphs[0].ParagraphText;  //技术要点
                     }
                     else
@@ -56,11 +57,12 @@ namespace HtmlTableToExecl
                         eImpdish.weix = table.Rows[2].GetCell(1).Paragraphs[0].ParagraphText;     //味型
                         eImpdish.diz = table.Rows[3].GetCell(1).Paragraphs[0].ParagraphText;      //地质
                         eImpdish.prjf = table.Rows[4].GetCell(1).Paragraphs[0].ParagraphText;     //烹饪技法
-                        eImpdish.zhul = table.Rows[5].GetCell(1).Paragraphs[0].ParagraphText;     //主料
-                        eImpdish.ful = table.Rows[6].GetCell(1).Paragraphs[0].ParagraphText;      //辅料
-                        eImpdish.tiaol = table.Rows[7].GetCell(1).Paragraphs[0].ParagraphText;    //调料
-                        eImpdish.pengrjf = table.Rows[8].GetCell(1).Paragraphs[0].ParagraphText;  //烹饪方法
-                        eImpdish.jishuyd = table.Rows[9].GetCell(1).Paragraphs[0].ParagraphText;  //技术要点
+
+                        eImpdish.zhul = GetAllParagraphText(table.Rows[5].GetCell(1).Paragraphs);     //主料
+                        eImpdish.ful = GetAllParagraphText(table.Rows[6].GetCell(1).Paragraphs);      //辅料
+                        eImpdish.tiaol = GetAllParagraphText(table.Rows[7].GetCell(1).Paragraphs);    //调料
+                        eImpdish.pengrjf = GetAllParagraphText(table.Rows[8].GetCell(1).Paragraphs);  //烹饪方法
+                        eImpdish.jishuyd = GetAllParagraphText(table.Rows[9].GetCell(1).Paragraphs);  //技术要点
                     }
 
                     //查找对应图片，并进行拷贝重命名
@@ -98,6 +100,19 @@ namespace HtmlTableToExecl
                 }
                 return sb.ToString();
             }
+        }
+
+        /// <summary>
+        /// 获取所有段落文本
+        /// </summary>
+        public static string GetAllParagraphText(IList<XWPFParagraph> Paragraphs)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (var item in Paragraphs)
+            {
+                sb.AppendLine(item.ParagraphText);
+            }
+            return sb.ToString();
         }
 
         /// <summary>
